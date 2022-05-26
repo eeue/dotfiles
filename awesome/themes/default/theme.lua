@@ -15,22 +15,22 @@ theme.wallpaper = themes_path.."default/1.jpg"
 -- {{{ Fonts
 theme.font          = "Terminus 10.5"
 -- {{{ Colors
-theme.bg_normal     = "#141422"
-theme.bg_focus      = "#141422"
-theme.bg_urgent     = "#141422"
-theme.bg_minimize   = "#141422"
+theme.bg_normal     = "#002b36"
+theme.bg_focus      = "#002b36"
+theme.bg_urgent     = "#002b36"
+theme.bg_minimize   = "#002b36"
 theme.bg_systray    = theme.bg_normal
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ad5100"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = "#2aa198"
+theme.fg_focus      = "#859900"
+theme.fg_urgent     = "#859900"
+theme.fg_minimize   = "#859900"
 -- }}}
 -- {{{ Borders
 theme.useless_gap   = dpi(10)
 theme.border_width  = dpi(0)
-theme.border_normal = "#141422"
-theme.border_focus  = "#141422"
-theme.border_marked = "#141422"
+theme.border_normal = "#859900"
+theme.border_focus  = "#859900"
+theme.border_marked = "#859900"
 -- }}}
 -- {{{ Menu
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
