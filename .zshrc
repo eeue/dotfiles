@@ -9,7 +9,8 @@ bindkey -e
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
+zstyle ':completion:*' menu select
+autoload -U colors && colors
 autoload -Uz compinit
 
 compinit
@@ -26,3 +27,9 @@ export PATH
 
 eval "$(starship init zsh)"
 
+# 1337 Plugin(s)
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Autosuggestion Settings
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
