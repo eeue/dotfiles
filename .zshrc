@@ -1,35 +1,24 @@
-# Important Settings idk
-
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-bindkey -e
-
-# Smexy Coompletionz
-
+# sexy completion
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select
 autoload -U colors && colors
 autoload -Uz compinit
-
 compinit
 
-# Adding to $PATH
+# history settings and emacs binding
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -e
 
-source $HOME/.cargo/env
+# fish-like autosuggestion, very cool
+source ~/zplugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# export to sub-processes (make it inherited by child processes)
+# fish-like syntax highlighting, also cool
+source ~/zplugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export PATH
-
-# Smexy Prompt :o
-
+# swaggy prompt
 eval "$(starship init zsh)"
 
-# 1337 Plugin(s)
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Autosuggestion Settings
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
