@@ -11,7 +11,7 @@ local themes_path = string.format("%s/.config/awesome/themes/", os.getenv("HOME"
 
 local theme = {}
 
-theme.font          = "Roboto Bold 10"
+theme.font          = "Roboto Bold 9"
 
 theme.bg_normal     = "#282a36"
 theme.bg_focus      = "#282a36"
