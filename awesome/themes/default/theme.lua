@@ -5,44 +5,30 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
-local gfs = require("gears.filesystem")
-local themes_path = "~/.config/awesome/themes/"
 
--- {{{ Main
+local gfs = require("gears.filesystem")
+local themes_path = string.format("%s/.config/awesome/themes/", os.getenv("HOME") )
+
 local theme = {}
-theme.wallpaper = themes_path.."default/1.jpg"
--- }}} 
--- {{{ Fonts
-theme.font          = "Terminus 10.5"
--- {{{ Colors
-theme.bg_normal     = "#002b36"
-theme.bg_focus      = "#002b36"
-theme.bg_urgent     = "#002b36"
-theme.bg_minimize   = "#002b36"
+
+theme.font          = "Roboto Bold 10"
+
+theme.bg_normal     = "#282a36"
+theme.bg_focus      = "#282a36"
+theme.bg_urgent     = "#282a36"
+theme.bg_minimize   = "#282a36"
 theme.bg_systray    = theme.bg_normal
-theme.fg_normal     = "#2aa198"
-theme.fg_focus      = "#859900"
-theme.fg_urgent     = "#859900"
-theme.fg_minimize   = "#859900"
--- }}}
--- {{{ Borders
-theme.useless_gap   = dpi(10)
-theme.border_width  = dpi(0)
-theme.border_normal = "#859900"
-theme.border_focus  = "#859900"
-theme.border_marked = "#859900"
--- }}}
--- {{{ Menu
-theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(120)
--- }}}
--- {{{ Tasklist
-theme.tasklist_disable_icon = true
--- }}}
--- {{{ Set Icon
-theme.awesome_icon = themes_path.."default/awesome-icon.png"
--- }}}
+
+theme.fg_normal     = "#f8f8f2"
+theme.fg_focus      = "#ff79c6"
+theme.fg_urgent     = "#ff79c6"
+theme.fg_minimize   = "#ff79c6"
+
+theme.useless_gap   = dpi(0)
+theme.border_width  = dpi(1)
+theme.border_normal = "#000000"
+theme.border_focus  = "#535d6c"
+theme.border_marked = "#91231c"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
@@ -52,6 +38,20 @@ theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
+
+-- Variables set for theming notifications:
+-- notification_font
+-- notification_[bg|fg]
+-- notification_[width|height|margin]
+-- notification_[border_color|border_width|shape|opacity]
+
+-- Variables set for theming the menu:
+-- menu_[bg|fg]_[normal|focus]
+-- menu_[border_color|border_width]
+theme.menu_submenu_icon = themes_path.."default/submenu.png"
+theme.menu_height = dpi(15)
+theme.menu_width  = dpi(120)
+
 
 -- Define the image to load
 theme.titlebar_close_button_normal = themes_path.."default/titlebar/close_normal.png"
@@ -80,6 +80,8 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
+theme.wallpaper = themes_path.."default/background.png"
+
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
 theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
@@ -98,7 +100,8 @@ theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
-
+-- {{ Icons
+theme.awesome_icon = themes_path.."default/awesome-icon.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
