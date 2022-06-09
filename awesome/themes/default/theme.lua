@@ -102,6 +102,7 @@ theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
 -- {{ Icons
 theme.awesome_icon = themes_path.."default/awesome-icon.png"
+theme.tasklist_disable_icon = true
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
