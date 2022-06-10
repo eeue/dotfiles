@@ -36,6 +36,7 @@ return require("packer").startup(function()
 	use("dracula/vim") -- colorscheme
 	use("nvim-lualine/lualine.nvim") -- cute line
 	use("kyazdani42/nvim-web-devicons") -- cool icons
+	use("lambdalisue/suda.vim")
 end),
 	
 use({
