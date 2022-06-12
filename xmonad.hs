@@ -36,7 +36,9 @@ myConfig =
 			("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"    ),
 			("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"    ),
 			("<XF86AudioMute>",        spawn "pactl set-sink-mute   @DEFAULT_SINK@  toggle"),
-			("M-<Tab>", windows W.focusDown)
+			("M-<Tab>", windows W.focusDown),
+			("<Print>", unGrab *> spawn "screenshot")
+
                       ]
 
 myManageHook :: ManageHook
@@ -82,5 +84,7 @@ myXmobarPP =
     red = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
 
-
+myStartupHook :: X ()
+myStartupHook = do
+spawnOnce "nitrogen --restore &"
     
