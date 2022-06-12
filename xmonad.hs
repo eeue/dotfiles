@@ -1,15 +1,17 @@
-import XMonad
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
-import XMonad.Layout.Magnifier
-import XMonad.Layout.ThreeColumns
-import XMonad.Util.EZConfig
-import XMonad.Util.Loggers
-import XMonad.Util.Ungrab
+import           XMonad
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.EwmhDesktops
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.ManageHelpers
+import           XMonad.Hooks.StatusBar
+import           XMonad.Hooks.StatusBar.PP
+import           XMonad.Layout.Magnifier
+import           XMonad.Layout.ThreeColumns
+import           XMonad.Layout.Spacing
+import 		 XMonad.Layout.NoBorders
+import           XMonad.Util.EZConfig
+import           XMonad.Util.Loggers
+import           XMonad.Util.Ungrab
 
 main :: IO ()
 main =
@@ -19,15 +21,18 @@ main =
     . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
     $ myConfig
 
+
 myConfig =
   def
     { modMask = mod4Mask, -- Rebind Mod to the Super key
-      layoutHook = myLayout, -- Use custom layouts
+      layoutHook = spacingWithEdge 10 $ noBorders $ myLayout, -- Use custom layouts
       manageHook = myManageHook -- Match on certain windows
     }
-    `additionalKeysP` [ ("M-<Return>", spawn "alacritty"),
-                        ("Print",       spawn "screenie"),
-                        ("M-p",  spawn "rofi -show drun")
+    `additionalKeysP` [ ("M-<Return>", spawn       "alacritty"),
+                        ("M-p",        spawn "rofi -show drun"),
+			("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"    ),
+			("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"    ),
+			("<XF86AudioMute>",        spawn "pactl set-sink-mute   @DEFAULT_SINK@  toggle")
                       ]
 
 myManageHook :: ManageHook
@@ -37,6 +42,7 @@ myManageHook =
       isDialog --> doFloat
     ]
 
+
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
   where
     threeCol = magnifiercz' 1.3 $ ThreeColMid nmaster delta ratio
@@ -44,6 +50,7 @@ myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
     nmaster = 1 -- Default number of windows in the master pane
     ratio = 1 / 2 -- Default proportion of screen occupied by master pane
     delta = 3 / 100 -- Percent of screen to increment by when resizing panes
+
 
 myXmobarPP :: PP
 myXmobarPP =
