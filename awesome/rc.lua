@@ -286,6 +286,11 @@ globalkeys = gears.table.join(
 	awful.key({}, "XF86AudioMute", function()
 		awful.util.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false)
 	end),
+        
+       -- Screenshot
+       awful.key({}, "Print", function ()
+	       awful.util.spawn ("screenshot", false)
+	end),
 
 	-- Layout manipulation
 	awful.key({ modkey, "Shift" }, "j", function()
