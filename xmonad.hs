@@ -1,14 +1,14 @@
 import           XMonad
+import 		 XMonad.Actions.NoBorders
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.ManageHelpers
 import           XMonad.Hooks.StatusBar
 import           XMonad.Hooks.StatusBar.PP
-import           XMonad.Layout.Magnifier
-import           XMonad.Layout.ThreeColumns
 import           XMonad.Layout.Spacing
 import 		 XMonad.Layout.NoBorders
+import 		 XMonad.Layout.BinarySpacePartition
 import           XMonad.Util.EZConfig
 import           XMonad.Util.Loggers
 import           XMonad.Util.Ungrab
@@ -25,7 +25,7 @@ main =
 myConfig =
   def
     { modMask = mod4Mask, -- Rebind Mod to the Super key
-      layoutHook = spacingWithEdge 10 $ noBorders $ myLayout, -- Use custom layouts
+      layoutHook = spacingWithEdge 10 $ noBorders $ lessBorders OnlyFloat $ myLayout, -- Use custom layouts
       manageHook = myManageHook -- Match on certain windows
     }
     `additionalKeysP` [ ("M-<Return>", spawn       "alacritty"),
@@ -43,9 +43,8 @@ myManageHook =
     ]
 
 
-myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
+myLayout = emptyBSP ||| tiled ||| Full 
   where
-    threeCol = magnifiercz' 1.3 $ ThreeColMid nmaster delta ratio
     tiled = Tall nmaster delta ratio
     nmaster = 1 -- Default number of windows in the master pane
     ratio = 1 / 2 -- Default proportion of screen occupied by master pane
