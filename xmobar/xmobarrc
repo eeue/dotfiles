@@ -1,12 +1,11 @@
 Config
-  { font = "xft:Terminus-10",
+  { font = "xft:Ubuntu Nerd Font:pixelsize=14:antialias=true:hinting=true",
     additionalFonts = [],
-    borderColor = "black",
-    border = TopB,
-    bgColor = "black",
-    fgColor = "grey",
+    borderColor = "#545862",
+    bgColor = "#282c34",
+    fgColor = "#aab2bf",
     alpha = 255,
-    position = TopW L 90,
+    position = Static { xpos = 0, ypos = 0, width = 1920, height = 30},
     textOffset = -1,
     iconOffset = -1,
     lowerOnStart = True,
@@ -21,7 +20,7 @@ Config
           Weather
           "KJYO"
           [ "-t",
-            "<station>: <tempF>F",
+            "<station>: <tempF>",
             "-L",
             "18",
             "-H",
