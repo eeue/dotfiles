@@ -58,14 +58,12 @@ myLayout = emptyBSP ||| tiled ||| Full
 myXmobarPP :: PP
 myXmobarPP =
   def
-    { ppSep = magenta " • ",
-      ppTitleSanitize = xmobarStrip,
-      ppCurrent = wrap " " "" . xmobarBorder "Top" "#8be9fd" 2,
-      ppHidden = white . wrap " " "",
-      ppHiddenNoWindows = lowWhite . wrap " " "",
-      ppUrgent = red . wrap (yellow "!") (yellow "!"),
-      ppOrder = \[ws, l, _, wins] -> [ws, l, wins],
-      ppExtras = [logTitles formatFocused formatUnfocused]
+    { ppSep =  " > ",
+      ppCurrent = xmobarColor "#61AFEF" "" . wrap "[" "]",
+      ppHidden = xmobarColor "#ABB2BF" "",
+      ppHiddenNoWindows = xmobarColor "#6b7089" "",
+      ppOrder = \(ws : l : t : ex) -> [ws] ++ map (xmobarColor "#E06C75" "") ex ++ [xmobarColor "#ABB2BF" "" t],
+      ppExtras = []
     }
   where
     formatFocused = wrap (white "[") (white "]") . magenta . ppWindow
