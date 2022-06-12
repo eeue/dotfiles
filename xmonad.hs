@@ -1,4 +1,5 @@
 import           XMonad
+import qualified XMonad.StackSet as W
 import 		 XMonad.Actions.NoBorders
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.EwmhDesktops
@@ -12,6 +13,8 @@ import 		 XMonad.Layout.BinarySpacePartition
 import           XMonad.Util.EZConfig
 import           XMonad.Util.Loggers
 import           XMonad.Util.Ungrab
+import           XMonad.Util.Run
+import           XMonad.Util.SpawnOnce
 
 main :: IO ()
 main =
@@ -32,7 +35,8 @@ myConfig =
                         ("M-p",        spawn "rofi -show drun"),
 			("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"    ),
 			("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"    ),
-			("<XF86AudioMute>",        spawn "pactl set-sink-mute   @DEFAULT_SINK@  toggle")
+			("<XF86AudioMute>",        spawn "pactl set-sink-mute   @DEFAULT_SINK@  toggle"),
+			("M-<Tab>", windows W.focusDown)
                       ]
 
 myManageHook :: ManageHook
@@ -79,3 +83,6 @@ myXmobarPP =
     yellow = xmobarColor "#f1fa8c" ""
     red = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
+
+
+    
