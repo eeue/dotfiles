@@ -24,5 +24,5 @@ Config
       ],
     sepChar = "%",
     alignSep = "}{",
-    template = "<fn=5>%UnsafeXMonadLog%</fn> | %memory% * %swap%  }{ <fc=#ee9a00>%date%</fc>"
+    template = " <fn=5>%UnsafeXMonadLog%</fn>   }%date%{ "
   }
