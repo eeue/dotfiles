@@ -1,20 +1,20 @@
 import           XMonad
-import qualified XMonad.StackSet as W
-import 		 XMonad.Actions.NoBorders
+import           XMonad.Actions.NoBorders
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.ManageHelpers
 import           XMonad.Hooks.StatusBar
 import           XMonad.Hooks.StatusBar.PP
+import           XMonad.Layout.BinarySpacePartition
+import           XMonad.Layout.NoBorders
 import           XMonad.Layout.Spacing
-import 		 XMonad.Layout.NoBorders
-import 		 XMonad.Layout.BinarySpacePartition
+import qualified XMonad.StackSet                    as W
 import           XMonad.Util.EZConfig
 import           XMonad.Util.Loggers
-import           XMonad.Util.Ungrab
 import           XMonad.Util.Run
 import           XMonad.Util.SpawnOnce
+import           XMonad.Util.Ungrab
 
 main :: IO ()
 main =
@@ -36,7 +36,8 @@ myConfig =
 			("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"    ),
 			("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"    ),
 			("<XF86AudioMute>",        spawn "pactl set-sink-mute   @DEFAULT_SINK@  toggle"),
-			("M-<Tab>", windows W.focusDown),
+			("M-<Tab>",   windows  W.focusDown ),
+			("M-S-<Tab>", windows  W.swapDown  ),
 			("<Print>", unGrab *> spawn "screenshot")
 
                       ]
@@ -45,11 +46,12 @@ myManageHook :: ManageHook
 myManageHook =
   composeAll
     [ className =? "Gimp" --> doFloat,
+      className =? "Steam" --> doFloat,
       isDialog --> doFloat
     ]
 
 
-myLayout = emptyBSP ||| tiled ||| Full 
+myLayout = emptyBSP ||| tiled ||| Full
   where
     tiled = Tall nmaster delta ratio
     nmaster = 1 -- Default number of windows in the master pane
@@ -87,4 +89,4 @@ myXmobarPP =
 myStartupHook :: X ()
 myStartupHook = do
 spawnOnce "nitrogen --restore &"
-    
+
