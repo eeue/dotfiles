@@ -28,8 +28,9 @@ main =
 myConfig =
   def
     { modMask = mod4Mask, -- Rebind Mod to the Super key
-      layoutHook = spacingWithEdge 10 $ noBorders $ lessBorders OnlyFloat $ myLayout, -- Use custom layouts
-      manageHook = myManageHook -- Match on certain windows
+      layoutHook  = spacingWithEdge 10 $ noBorders $ lessBorders OnlyFloat $ myLayout, -- Use custom layouts
+      manageHook  = myManageHook, -- Match on certain windows
+      startupHook = myStartupHook
     }
     `additionalKeysP` [ ("M-<Return>", spawn       "alacritty"),
                         ("M-p",        spawn "rofi -show drun"),
