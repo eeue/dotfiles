@@ -71,7 +71,7 @@ myXmobarPP =
       ppExtras = []
     }
   where
-    formatFocused = wrap (white "[") (white "]") . magenta . ppWindow
+    formatFocused = wrap (white "[") (white "]") . blue . ppWindow
     formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue . ppWindow
 
     -- \| Windows should have *some* title, which should not not exceed a
@@ -79,12 +79,9 @@ myXmobarPP =
     ppWindow :: String -> String
     ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
 
-    blue, lowWhite, magenta, red, white, yellow :: String -> String
-    magenta = xmobarColor "#ff79c6" ""
+    blue, lowWhite, white :: String -> String
     blue = xmobarColor "#bd93f9" ""
     white = xmobarColor "#f8f8f2" ""
-    yellow = xmobarColor "#f1fa8c" ""
-    red = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
 
 myStartupHook :: X ()
