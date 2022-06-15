@@ -16,13 +16,11 @@ Config
     allDesktops = True,
     overrideRedirect = True,
     commands =
-      [ Run Memory ["-t", "Mem: <usedratio>%"] 10,
-        Run Swap [] 10,
+      [ 
         Run Date "%a %b %_d %Y %H:%M:%S" "date" 10,
-	Run UnsafeXMonadLog
-
+	Run XMonadLog
       ],
     sepChar = "%",
     alignSep = "}{",
-    template = " <fn=5>%UnsafeXMonadLog%</fn>   }%date%{ "
+    template = " <fn=5>%XMonadLog%</fn>   }%date%{ "
   }
