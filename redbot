@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+
+command=/home/YOURUSERNAME/redenv/bin/python # put your username here pls
+command_args="-O -m redbot INSTANCENAME --no-prompt" # put the name here.
+command_user="YOURUSERNAME:users" # specify that we're running this as a user.
+pidfile=/var/run/redbot.pid # we have a pid file for our daemon or whatever
+
+name="Redbot Daemon"
+description="Simple Daemon For The Redbot Discord Bot."
+
